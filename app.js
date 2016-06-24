@@ -18,7 +18,6 @@ var connection_string_for_postgres = {
     password: 'samplepass'
 };
 var db = pgp(connection_string_for_postgres);
-console.log(db);
 
 var app = express();
 
@@ -33,6 +32,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use(express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use(express.static(__dirname + '/node_modules/jquery2')); // redirect JS jQuery
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 app.use('/', routes);
 app.use('/users', users);
@@ -68,5 +72,13 @@ app.use(function(err, req, res, next) {
   });
 });
 
+//Custome responses
+
+
+
+app.listen(3000, function () {
+  console.log('Server start at port 3000!');
+});
 
 module.exports = app;
+module.exports.db = db;
