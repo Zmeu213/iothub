@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var registration = require('./routes/registration');
 
 //PGSQL integration
 var pgp = require('pg-promise')();  
@@ -39,6 +40,7 @@ app.use(express.static(__dirname + '/node_modules/jquery2')); // redirect JS jQu
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 app.use('/', routes);
+app.use('/registration', registration);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
