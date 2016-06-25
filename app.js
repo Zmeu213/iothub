@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var registration = require('./routes/registration');
+var api = require('./routes/api');
 
 //PGSQL integration
 var pgp = require('pg-promise')();  
@@ -42,6 +43,8 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redi
 app.use('/', routes);
 app.use('/registration', registration);
 app.use('/users', users);
+
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
