@@ -15,8 +15,8 @@ var pgp = require('pg-promise')();
 var connection_string_for_postgres = {
     host: 'localhost',
     port: 5433,
-    database: 'testdb',
-    user: 'app_ro',
+    database: 'iothub',
+    user: 'app_rw',
     password: 'samplepass'
 };
 var db = pgp(connection_string_for_postgres);
