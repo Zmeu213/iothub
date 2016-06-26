@@ -4,22 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var vis = require("vis");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var registration = require('./routes/registration');
 var api = require('./routes/api');
-
-//PGSQL integration
-var pgp = require('pg-promise')();  
-var connection_string_for_postgres = {
-    host: 'localhost',
-    port: 5433,
-    database: 'iothub',
-    user: 'app_rw',
-    password: 'samplepass'
-};
-var db = pgp(connection_string_for_postgres);
+var view_temp = require('./routes/view_temp');
+var about = require('./routes/about');
+var user = require("./routes/user");
+var custom_view = require("./routes/custom_webpage");
 
 var app = express();
 
@@ -28,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +37,10 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redi
 app.use('/', routes);
 app.use('/registration', registration);
 app.use('/users', users);
+app.use('/view_temp', view_temp);
+app.use('/about', about);
+app.use('/user', user);
+app.use('/comming_soon', custom_view);
 
 app.use('/api', api);
 
@@ -86,4 +84,3 @@ app.listen(process.env.PORT, function () {
 });
 
 module.exports = app;
-module.exports.db = db;
