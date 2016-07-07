@@ -2,9 +2,19 @@ extends layout
 
 block content
   div(class="jumbotron")
-    div(class="container")
+    |  <style>
+    |  @font-face { font-family: Avenir; src: url('AvenirNextLTPro-Regular.TTF'); 
+    |  #norm_font:{
+    |    font-family: Avenir
+    |  }
+    | </style>
+    div(class="container text-center norm_font")
       h1 Welcome to IoThub!
-      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    div(class="container")
+      p. 
+        IoThub - ваше персональное хранилище для данных с датчиков уного дома, фитнес трекеров и медицинских датчиков, смартфонов и идентификаторов для устройств физического веба. 
+        IoThub соберет, обработает, представит вам актуальную информацию с ваших датчиков и сделает для вас то на что вы его запрограммируете. Большинство функций пока в 
+        разработке, жизнь слишком коротка что бы тратитть её на код, кушать тоже когда-то надо!
       p
         a(class="btn btn-primary btn-lg", href="/registration", role="button") Registration &raquo;
   div(class="container")

@@ -4,7 +4,7 @@ function returnData(data){
 
 function api_select(dev, callback ) {
     var result;
-    var api = "https://iothub-hackerman.c9users.io/api/get_data/device="+dev+"/from=06.25.2016/to=06.26.2016";
+    var api = "https://iothub-hackerman.c9users.io/api/get_data/device="+dev+"/from=06.24.2016/to=06.25.2016";
     $.getJSON(api)
     .done(function( data ) {
         // console.log(JSON.stringify(data));
